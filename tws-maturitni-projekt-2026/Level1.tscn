@@ -36,6 +36,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016392231, 0.01376605, 0.029651761)
 mesh = SubResource("BoxMesh_mc20k")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
@@ -44,7 +45,7 @@ mesh = SubResource("BoxMesh_mc20k")
 shape = SubResource("ConcavePolygonShape3D_cove1")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.762017, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.76582, 0)
 script = ExtResource("1_kyxg0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]

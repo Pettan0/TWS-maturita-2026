@@ -1,0 +1,223 @@
+[gd_scene load_steps=9 format=3 uid="uid://dhvtxvfoyc0r0"]
+
+[ext_resource type="Script" uid="uid://dbqe3xnw4vjmt" path="res://main_menu.gd" id="1_7jlr6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbtgn"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jlr6"]
+bg_color = Color(0.542318, 0.542318, 0.542318, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enwfr"]
+bg_color = Color(0.6941206, 0.6941206, 0.6941205, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pbtgn"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_7jlr6"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_enwfr"]
+color = Color(0.35714206, 0.55610263, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_um2lw"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7jlr6")
+
+[node name="MainButtons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -201.0
+offset_top = -116.0
+offset_right = 201.25
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ButtonStart" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+text = "Zapnou hru"
+
+[node name="ButtonSettings" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+text = "Nastavení"
+
+[node name="ButtonExit" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+text = "Vypnou hru"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -201.125
+offset_top = -265.0
+offset_right = 200.875
+offset_bottom = -169.0
+theme_override_font_sizes/font_size = 70
+text = "(Název hry)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.5
+offset_top = -162.0
+offset_right = 350.5
+offset_bottom = 194.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.298386
+offset_top = -171.25
+offset_right = 126.2984
+offset_bottom = -110.25
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "Nastavení"
+horizontal_alignment = 1
+
+[node name="ButtonBack" type="Button" parent="Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = 95.75
+offset_right = 132.0
+offset_bottom = 160.75
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+text = "Zpět"
+
+[node name="HSlider" type="HSlider" parent="Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -102.0
+offset_right = 225.0
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_7jlr6")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_enwfr")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_um2lw")
+max_value = 1.0
+step = 0.05
+value = 0.6
+
+[node name="Label2" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.75
+offset_top = -127.25
+offset_right = 48.75
+offset_bottom = -62.25
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "Zvuk
+"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MainButtons/ButtonStart" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MainButtons/ButtonSettings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainButtons/ButtonExit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Options/ButtonBack" to="." method="_on_back_pressed"]

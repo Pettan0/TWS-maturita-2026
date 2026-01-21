@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TWS Maturitni Projekt 2026"
-run/main_scene="uid://bil338hkicnwx"
+run/main_scene="uid://dhvtxvfoyc0r0"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
