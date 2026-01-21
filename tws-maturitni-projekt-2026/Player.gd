@@ -1,10 +1,25 @@
 extends CharacterBody3D
 
+@onready var camera := $Camera3D
+@onready var pause_menu: Control = $Camera3D/PauseMenu
 
+var pause = false
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
-@onready var camera := $Camera3D
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		_pauseMenu()
+	
+func _pauseMenu():
+	if pause:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0
+	pause = !pause
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
