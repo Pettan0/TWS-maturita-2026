@@ -9,27 +9,26 @@ extends CharacterBody3D
 var pause = false
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 3.5
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pause"):
-		_pauseMenu()
-	
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 func _pauseMenu():
 	if pause:
 		pause_menu.hide()
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		Engine.time_scale = 1
 	else:
 		pause_menu.show()
 		Engine.time_scale = 0
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	pause = !pause
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	elif event.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if Input.is_action_just_pressed("pause"):
+		_pauseMenu()
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
 			rotate_y(-event.relative.x * 0.002)

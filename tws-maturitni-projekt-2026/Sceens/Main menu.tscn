@@ -1,0 +1,138 @@
+[gd_scene load_steps=9 format=3 uid="uid://dhvtxvfoyc0r0"]
+
+[ext_resource type="Script" uid="uid://dbqe3xnw4vjmt" path="res://Scripts/main_menu.gd" id="1_7jlr6"]
+[ext_resource type="Script" uid="uid://d1gfh7u42mtws" path="res://Scripts/button_animation1.gd" id="3_m82ya"]
+[ext_resource type="PackedScene" uid="uid://ce40thh88laj0" path="res://Sceens/Settings menu.tscn" id="3_um2lw"]
+[ext_resource type="AudioStream" uid="uid://cba24u2nhbfii" path="res://Sounds/Music/Main menu Loop.wav" id="4_m82ya"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbtgn"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jlr6"]
+bg_color = Color(0.542318, 0.542318, 0.542318, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enwfr"]
+bg_color = Color(0.6941206, 0.6941206, 0.6941205, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pbtgn"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_7jlr6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -201.125
+offset_top = -265.0
+offset_right = 200.875
+offset_bottom = -169.0
+theme_override_font_sizes/font_size = 70
+text = "(Název hry)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_m82ya")
+autoplay = true
+bus = &"Music"
+
+[node name="ButtonStart" type="Button" parent="."]
+layout_mode = 0
+offset_left = -201.125
+offset_top = -109.0
+offset_right = 200.875
+offset_bottom = -16.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+text = "Zapnou hru"
+script = ExtResource("3_m82ya")
+
+[node name="ButtonExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = -201.125
+offset_top = 19.0
+offset_right = 200.875
+offset_bottom = 113.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+text = "Vypnou hru"
+script = ExtResource("3_m82ya")
+
+[node name="ButtonSettings" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 433.0
+offset_top = 241.0
+offset_right = 563.0
+offset_bottom = 309.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+text = "Nastavení
+"
+script = ExtResource("3_m82ya")
+
+[node name="Settings" parent="." instance=ExtResource("3_um2lw")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="ButtonStart" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="ButtonExit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ButtonSettings" to="." method="_settings_show"]

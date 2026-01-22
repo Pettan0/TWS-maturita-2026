@@ -1,0 +1,142 @@
+[gd_scene load_steps=7 format=3 uid="uid://co4givesqwyy5"]
+
+[ext_resource type="Script" uid="uid://bjdyqrsyqvnje" path="res://Scripts/pause_menu.gd" id="1_86lni"]
+[ext_resource type="PackedScene" uid="uid://ce40thh88laj0" path="res://Sceens/Settings menu.tscn" id="2_eqe7t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbtgn"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jlr6"]
+bg_color = Color(0.542318, 0.542318, 0.542318, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enwfr"]
+bg_color = Color(0.6941206, 0.6941206, 0.6941205, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pbtgn"]
+
+[node name="pause Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -575.0
+offset_top = -321.0
+offset_right = 576.0
+offset_bottom = 326.81415
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_86lni")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -604.5
+offset_top = -349.5
+offset_right = 604.5
+offset_bottom = 349.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -214.0
+offset_top = -19.0
+offset_right = 214.0
+offset_bottom = 77.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 70
+text = "pozastaveno"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonUnpuase" type="Button" parent="."]
+layout_mode = 0
+offset_left = -18.0
+offset_top = 192.0
+offset_right = 260.0
+offset_bottom = 263.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+text = "Zpět do hry
+"
+
+[node name="ButtonSettings" type="Button" parent="."]
+layout_mode = 0
+offset_left = -18.0
+offset_top = 288.0
+offset_right = 260.0
+offset_bottom = 359.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+text = "Nastavení"
+
+[node name="ButtonMenu" type="Button" parent="."]
+layout_mode = 0
+offset_left = -18.0
+offset_top = 384.0
+offset_right = 260.0
+offset_bottom = 456.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+text = "Vrátit se do menu"
+
+[node name="Settings" parent="." instance=ExtResource("2_eqe7t")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="ButtonUnpuase" to="." method="_on_unpuase_pressed"]
+[connection signal="pressed" from="ButtonSettings" to="." method="_settings_show"]
+[connection signal="pressed" from="ButtonMenu" to="." method="_on_menu_pressed"]

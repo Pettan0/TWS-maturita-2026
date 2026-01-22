@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://btqemfn0kg4i2"]
 
-[ext_resource type="Script" uid="uid://s87k2qfp0jqw" path="res://Player.gd" id="1_kpjcp"]
-[ext_resource type="PackedScene" uid="uid://co4givesqwyy5" path="res://Pause Menu.tscn" id="2_kne1u"]
+[ext_resource type="Script" uid="uid://s87k2qfp0jqw" path="res://Scripts/Player.gd" id="1_kpjcp"]
+[ext_resource type="PackedScene" uid="uid://co4givesqwyy5" path="res://Sceens/Pause Menu.tscn" id="2_kne1u"]
 [ext_resource type="AudioStream" uid="uid://cyerudp1mx658" path="res://Sounds/SFX/walk1.wav" id="3_cxr5p"]
 [ext_resource type="AudioStream" uid="uid://b1qkbo3s8yrq" path="res://Sounds/SFX/Jump1.wav" id="4_e80uo"]
 [ext_resource type="AudioStream" uid="uid://cwkdp1d4u5nrc" path="res://Sounds/SFX/sprint1.wav" id="4_tdg3f"]
@@ -40,6 +40,7 @@ bus = &"SFX"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 stream = ExtResource("4_tdg3f")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="Jump1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_e80uo")
