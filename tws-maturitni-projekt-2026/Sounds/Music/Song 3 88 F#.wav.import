@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dgd1ep03k1it0"
+path="res://.godot/imported/Song 3 88 F#.wav-1da961c22844a289797faba02b485f8a.sample"
+
+[deps]
+
+source_file="res://Sounds/Music/Song 3 88 F#.wav"
+dest_files=["res://.godot/imported/Song 3 88 F#.wav-1da961c22844a289797faba02b485f8a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

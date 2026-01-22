@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dhvtxvfoyc0r0"]
+[gd_scene load_steps=13 format=3 uid="uid://dhvtxvfoyc0r0"]
 
 [ext_resource type="Script" uid="uid://dbqe3xnw4vjmt" path="res://main_menu.gd" id="1_7jlr6"]
-[ext_resource type="AudioStream" uid="uid://8uqkyh6qlm7f" path="res://test.wav" id="2_enwfr"]
 [ext_resource type="Script" uid="uid://bohfpry5mulnx" path="res://master_volume.gd" id="2_um2lw"]
+[ext_resource type="Script" uid="uid://bcv0wvnvo5yo3" path="res://scale_control.gd" id="3_m82ya"]
+[ext_resource type="AudioStream" uid="uid://cba24u2nhbfii" path="res://Sounds/Music/Main menu Loop.wav" id="4_m82ya"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbtgn"]
 bg_color = Color(1, 1, 1, 1)
@@ -373,7 +374,7 @@ offset_right = -14.0
 offset_bottom = -98.5
 grow_horizontal = 0
 grow_vertical = 2
-selected = 0
+selected = 1
 fit_to_longest_item = false
 item_count = 5
 popup/item_0/text = "Ultra"
@@ -386,6 +387,7 @@ popup/item_3/text = "Nízká"
 popup/item_3/id = 3
 popup/item_4/text = "Brambora"
 popup/item_4/id = 4
+script = ExtResource("3_m82ya")
 
 [node name="Label2" type="Label" parent="Options/HBoxContainer/PanelOstatni"]
 layout_mode = 1
@@ -404,12 +406,10 @@ theme_override_font_sizes/font_size = 25
 text = "Kvalita textur"
 horizontal_alignment = 1
 
-[node name="Test" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_enwfr")
+[node name="MainMenuLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_m82ya")
 autoplay = true
-mix_target = 1
 bus = &"Music"
-playback_type = 1
 
 [connection signal="pressed" from="MainButtons/ButtonStart" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MainButtons/ButtonSettings" to="." method="_on_settings_pressed"]
