@@ -1,27 +1,27 @@
 extends CharacterBody3D
 
-@onready var camera := $Camera3D
-@onready var pause_menu: Control = $Camera3D/PauseMenu
+@onready var camera: Camera3D = $Head/Camera3D
+@onready var pause_menu: Control = $Head/Camera3D/PauseMenu
 @onready var walk: AudioStreamPlayer3D = $Walk
 @onready var sprint: AudioStreamPlayer3D = $Sprint
 @onready var jump_1: AudioStreamPlayer = $Jump1
+@onready var headbobing: AnimationPlayer = $Head/AnimationPlayer
 
 var pause = false
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 3.5
+const SPEED = 4.0
+const JUMP_VELOCITY = 3.0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	headbobing.play("Headbob")
 
 func _pauseMenu():
 	if pause:
 		pause_menu.hide()
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		Engine.time_scale = 1
 	else:
 		pause_menu.show()
-		Engine.time_scale = 0
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	pause = !pause
 
@@ -41,31 +41,41 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		jump_1.play()
+	if !pause:
+		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
+			jump_1.play()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		if Input.is_action_pressed("sprint"):
-			velocity.x = direction.x * 1.5 * SPEED
-			velocity.z = direction.z * 1.5 * SPEED
-			if is_on_floor() and !sprint.playing:
-				sprint.pitch_scale = randf_range(.8, 1.2)
-				sprint.play()
-		else: 
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED
-			if is_on_floor() and !walk.playing:
-				walk.pitch_scale = randf_range(.8, 1.2)
-				walk.play()
+	if !pause:
+		if direction:
+			if Input.is_action_pressed("sprint"):
+				camera.fov = 60
+				if headbobing.speed_scale != 3.0:
+					headbobing.speed_scale = 3.0
+				velocity.x = direction.x * 1.5 * SPEED
+				velocity.z = direction.z * 1.5 * SPEED
+				if is_on_floor() and !sprint.playing:
+					sprint.pitch_scale = randf_range(.8, 1.2)
+					sprint.play()
+			else: 
+				if headbobing.speed_scale != 2.0:
+					headbobing.speed_scale = 2.0
+				camera.fov = 75
+				velocity.x = direction.x * SPEED
+				velocity.z = direction.z * SPEED
+				if is_on_floor() and !walk.playing:
+					walk.pitch_scale = randf_range(.8, 1.2)
+					walk.play()
 			
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		else:
+			if headbobing.speed_scale != 0.0:
+				headbobing.speed_scale = 0.0
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
 
 
 	move_and_slide()

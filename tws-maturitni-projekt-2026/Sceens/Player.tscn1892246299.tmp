@@ -1,48 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://btqemfn0kg4i2"]
+[gd_scene load_steps=8 format=3 uid="uid://btqemfn0kg4i2"]
 
 [ext_resource type="Script" uid="uid://s87k2qfp0jqw" path="res://Scripts/Player.gd" id="1_kpjcp"]
 [ext_resource type="PackedScene" uid="uid://co4givesqwyy5" path="res://Sceens/Pause Menu.tscn" id="2_kne1u"]
 [ext_resource type="AudioStream" uid="uid://cyerudp1mx658" path="res://Sounds/SFX/walk1.wav" id="3_cxr5p"]
 [ext_resource type="AudioStream" uid="uid://b1qkbo3s8yrq" path="res://Sounds/SFX/Jump1.wav" id="4_e80uo"]
 [ext_resource type="AudioStream" uid="uid://cwkdp1d4u5nrc" path="res://Sounds/SFX/sprint1.wav" id="4_tdg3f"]
-
-[sub_resource type="Animation" id="Animation_egxsg"]
-resource_name = "Headbob"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.1, 0, 0), Vector3(0, -0.1, 0), Vector3(0.1, 0, 0), Vector3(0, -0.1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_oy8aj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.1, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_41hay"]
-_data = {
-&"Headbob": SubResource("Animation_egxsg"),
-&"RESET": SubResource("Animation_oy8aj")
-}
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_e80uo"]
 
@@ -56,7 +18,6 @@ script = ExtResource("1_kpjcp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5490103, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
 
 [node name="PauseMenu" parent="Head/Camera3D" instance=ExtResource("2_kne1u")]
 visible = false
@@ -64,11 +25,6 @@ offset_left = -575.5
 offset_top = -323.90707
 offset_right = 575.5
 offset_bottom = 323.90707
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Head"]
-libraries = {
-&"": SubResource("AnimationLibrary_41hay")
-}
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_e80uo")

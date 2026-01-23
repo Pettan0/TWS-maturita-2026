@@ -1,6 +1,6 @@
 extends Control
 
-@onready var player: CharacterBody3D = $"../.."
+@onready var player: CharacterBody3D = $"../../.."
 @onready var settings: Control = $Settings
 
 
@@ -22,4 +22,4 @@ func _on_back_pressed() -> void:
 
 
 func _on_menu_pressed() -> void:
-	get_tree().change_scene_to_file("res://Main menu.tscn")
+	get_tree().change_scene_to_file("res://Sceens/Main menu.tscn")
