@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://btqemfn0kg4i2"]
+[gd_scene load_steps=13 format=3 uid="uid://btqemfn0kg4i2"]
 
 [ext_resource type="Script" uid="uid://s87k2qfp0jqw" path="res://Scripts/Player.gd" id="1_kpjcp"]
 [ext_resource type="PackedScene" uid="uid://co4givesqwyy5" path="res://Sceens/Pause Menu.tscn" id="2_kne1u"]
@@ -37,9 +37,55 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(-0.1, 0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [85.0]
+}
+
+[sub_resource type="Animation" id="Animation_tir5b"]
+resource_name = "FovIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:fov")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [85.0, 75.0]
+}
+
+[sub_resource type="Animation" id="Animation_41hay"]
+resource_name = "FovOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:fov")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [75.0, 85.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_41hay"]
 _data = {
+&"FovIn": SubResource("Animation_tir5b"),
+&"FovOut": SubResource("Animation_41hay"),
 &"Headbob": SubResource("Animation_egxsg"),
 &"RESET": SubResource("Animation_oy8aj")
 }
@@ -57,6 +103,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5490103, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
+fov = 85.0
 
 [node name="PauseMenu" parent="Head/Camera3D" instance=ExtResource("2_kne1u")]
 visible = false
@@ -65,7 +112,7 @@ offset_top = -323.90707
 offset_right = 575.5
 offset_bottom = 323.90707
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Head"]
+[node name="animations" type="AnimationPlayer" parent="Head"]
 libraries = {
 &"": SubResource("AnimationLibrary_41hay")
 }

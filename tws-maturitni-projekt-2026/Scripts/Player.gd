@@ -5,7 +5,9 @@ extends CharacterBody3D
 @onready var walk: AudioStreamPlayer3D = $Walk
 @onready var sprint: AudioStreamPlayer3D = $Sprint
 @onready var jump_1: AudioStreamPlayer = $Jump1
-@onready var headbobing: AnimationPlayer = $Head/AnimationPlayer
+@onready var animations: AnimationPlayer = $Head/animations
+
+
 
 var pause = false
 
@@ -14,7 +16,7 @@ const JUMP_VELOCITY = 3.0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	headbobing.play("Headbob")
+	animations.play("Headbob")
 
 func _pauseMenu():
 	if pause:
@@ -53,18 +55,20 @@ func _physics_process(delta: float) -> void:
 	if !pause:
 		if direction:
 			if Input.is_action_pressed("sprint"):
-				camera.fov = 60
-				if headbobing.speed_scale != 3.0:
-					headbobing.speed_scale = 3.0
+				if camera.fov == 75:
+					animations.play("FovOut")
+				if animations.speed_scale != 3.0:
+					animations.speed_scale = 3.0
 				velocity.x = direction.x * 1.5 * SPEED
 				velocity.z = direction.z * 1.5 * SPEED
 				if is_on_floor() and !sprint.playing:
 					sprint.pitch_scale = randf_range(.8, 1.2)
 					sprint.play()
 			else: 
-				if headbobing.speed_scale != 2.0:
-					headbobing.speed_scale = 2.0
-				camera.fov = 75
+				if camera.fov == 85: 
+					animations.play("FovIn")
+				if animations.speed_scale != 2.0:
+					animations.speed_scale = 2.0
 				velocity.x = direction.x * SPEED
 				velocity.z = direction.z * SPEED
 				if is_on_floor() and !walk.playing:
@@ -72,8 +76,10 @@ func _physics_process(delta: float) -> void:
 					walk.play()
 			
 		else:
-			if headbobing.speed_scale != 0.0:
-				headbobing.speed_scale = 0.0
+			if camera.fov == 85: 
+				animations.play("FovIn")
+			if animations.speed_scale != 0.0:
+				animations.speed_scale = 0.0
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
 

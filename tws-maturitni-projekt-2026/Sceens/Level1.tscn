@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bil338hkicnwx"]
+[gd_scene load_steps=13 format=3 uid="uid://bil338hkicnwx"]
 
 [ext_resource type="Script" uid="uid://cbfpth25ttnim" path="res://Scripts/level_1.gd" id="1_mc20k"]
 [ext_resource type="PackedScene" uid="uid://btqemfn0kg4i2" path="res://Sceens/Player.tscn" id="2_mc20k"]
@@ -36,8 +36,6 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rom52"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_0i0qx"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_mc20k")
@@ -87,14 +85,6 @@ mesh = SubResource("BoxMesh_ksb8h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_rom52")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2506943, 1.728796, -3.2954373)
-mesh = SubResource("CapsuleMesh_0i0qx")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(0.999373, 0, -0.035405327, 0, 1, 0, 0.035405327, 0, 0.999373, -8.590633, 0.13890219, 0.6301966)
-mesh = SubResource("CapsuleMesh_0i0qx")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 1, -5.8379536, 2.9928167, 6.759182)
