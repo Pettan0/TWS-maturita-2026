@@ -135,7 +135,7 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D7/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_nkl6c")
 
-[node name="Player" parent="." instance=ExtResource("2_mc20k")]
+[node name="Player" parent="." groups=["enemy"] instance=ExtResource("2_mc20k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.771462, 0)
 
 [node name="enemy" type="CharacterBody3D" parent="."]

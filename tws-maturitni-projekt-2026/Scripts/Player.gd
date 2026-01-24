@@ -6,15 +6,19 @@ extends CharacterBody3D
 @onready var sprint: AudioStreamPlayer3D = $Sprint
 @onready var jump_1: AudioStreamPlayer = $Jump1
 @onready var animations: AnimationPlayer = $Head/animations
+@onready var fov_animation: AnimationPlayer = $Head/FovAnimation
+
 
 
 
 var pause = false
 
+
 const SPEED = 4.0
 const JUMP_VELOCITY = 3.0
 
 func _ready():
+	fov_animation.speed_scale = 3
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	animations.play("Headbob")
 
@@ -56,7 +60,7 @@ func _physics_process(delta: float) -> void:
 		if direction:
 			if Input.is_action_pressed("sprint"):
 				if camera.fov == 75:
-					animations.play("FovOut")
+					fov_animation.play("FovOut")
 				if animations.speed_scale != 3.0:
 					animations.speed_scale = 3.0
 				velocity.x = direction.x * 1.5 * SPEED
@@ -66,7 +70,7 @@ func _physics_process(delta: float) -> void:
 					sprint.play()
 			else: 
 				if camera.fov == 85: 
-					animations.play("FovIn")
+					fov_animation.play("FovIn")
 				if animations.speed_scale != 2.0:
 					animations.speed_scale = 2.0
 				velocity.x = direction.x * SPEED
@@ -77,7 +81,7 @@ func _physics_process(delta: float) -> void:
 			
 		else:
 			if camera.fov == 85: 
-				animations.play("FovIn")
+				fov_animation.play("FovIn")
 			if animations.speed_scale != 0.0:
 				animations.speed_scale = 0.0
 			velocity.x = move_toward(velocity.x, 0, SPEED)

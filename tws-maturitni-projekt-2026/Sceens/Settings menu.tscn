@@ -280,15 +280,34 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 110.5
+offset_left = 94.0
 offset_top = -167.5
-offset_right = 224.5
+offset_right = 238.0
 offset_bottom = -118.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
-text = "Ostatní"
+text = "Ovládání"
 horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="Options/HBoxContainer/PanelOstatni"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.0
+offset_top = -128.59293
+offset_right = 16.0
+offset_bottom = 164.40707
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "interakce         ( E )
+útok               ( LMB )
+blokování      ( RMB )
+skill tree           ( K )"
 
 [connection signal="pressed" from="Options/ButtonBack" to="." method="_on_button_back_pressed"]
 [connection signal="value_changed" from="Options/HBoxContainer/PanelZvuk/MasterVolume" to="Options/HBoxContainer/PanelZvuk/MasterVolume" method="_on_value_changed"]
